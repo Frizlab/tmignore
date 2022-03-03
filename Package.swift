@@ -24,6 +24,6 @@ let package = Package(
 			.product(name: "SwiftCLI",     package: "SwiftCLI"),
 			.product(name: "SwiftExec",    package: "swift-exec"),
 			.product(name: "SwiftyJSON",   package: "SwiftyJSON")
-		], path: "tmignore")
+		])
 	]
 )
