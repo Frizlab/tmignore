@@ -14,7 +14,7 @@ let logger: Logger = {
 	
 	/* Configure swift-log to use Helium backend. */
 	LoggingSystem.bootstrap(heliumLogger.makeLogHandler)
-	return Logger(label: "com.samuelmeuli.tmignore")
+	return Logger(label: "me.frizlab.tmignore")
 }()
 
 @main
