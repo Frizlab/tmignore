@@ -9,7 +9,7 @@ import Logging
 @main
 struct Tmignore : ParsableCommand {
 	
-	static var configuration: CommandConfiguration = .init(
+	static let configuration: CommandConfiguration = .init(
 		abstract: "Exclude development files from Time Machine backups",
 		version: "1.2.2",
 		subcommands: [
