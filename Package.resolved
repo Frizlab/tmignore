@@ -20,6 +20,15 @@
         }
       },
       {
+        "package": "swift-argument-parser",
+        "repositoryURL": "https://github.com/apple/swift-argument-parser.git",
+        "state": {
+          "branch": null,
+          "revision": "e394bf350e38cb100b6bc4172834770ede1b7232",
+          "version": "1.0.3"
+        }
+      },
+      {
         "package": "SwiftExec",
         "repositoryURL": "https://github.com/samuelmeuli/swift-exec.git",
         "state": {
@@ -35,15 +44,6 @@
           "branch": null,
           "revision": "5d66f7ba25daf4f94100e7022febf3c75e37a6c7",
           "version": "1.4.2"
-        }
-      },
-      {
-        "package": "SwiftCLI",
-        "repositoryURL": "https://github.com/jakeheis/SwiftCLI.git",
-        "state": {
-          "branch": null,
-          "revision": "2816678bcc37f4833d32abeddbdf5e757fa891d8",
-          "version": "6.0.2"
         }
       },
       {
