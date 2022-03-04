@@ -28,7 +28,7 @@ class Cache {
 		do {
 			try FileManager.default.removeItem(atPath: cacheDirPath)
 		} catch {
-			logger.error("Could not delete cache directory: \(error.localizedDescription)")
+			Tmignore.logger.error("Could not delete cache directory: \(error.localizedDescription)")
 		}
 	}
 
@@ -39,12 +39,12 @@ class Cache {
 			do {
 				let json = try JSON(data: jsonData as Data)
 				paths = json["paths"].arrayValue.map { $0.stringValue }
-				logger.debug("Found cache file at \(cacheFilePath)")
+				Tmignore.logger.debug("Found cache file at \(cacheFilePath)")
 			} catch {
-				logger.error("Could not parse cache file: \(error.localizedDescription)")
+				Tmignore.logger.error("Could not parse cache file: \(error.localizedDescription)")
 			}
 		} else {
-			logger.debug("No cache file found at \(cacheFilePath)")
+			Tmignore.logger.debug("No cache file found at \(cacheFilePath)")
 		}
 		return paths
 	}
@@ -57,7 +57,7 @@ class Cache {
 		do {
 			jsonData = try JSON(["paths": paths]).rawData()
 		} catch {
-			logger.error(
+			Tmignore.logger.error(
 				"Could not convert cache JSON into raw data: \(error.localizedDescription)"
 			)
 			return
@@ -70,7 +70,7 @@ class Cache {
 				withIntermediateDirectories: true
 			)
 		} catch {
-			logger.error(
+			Tmignore.logger.error(
 				"Could not create cache directory at \(cacheDirPath): \(error.localizedDescription)"
 			)
 			return
@@ -80,16 +80,16 @@ class Cache {
 		do {
 			if FileManager.default.fileExists(atPath: cacheFilePath) {
 				// Replace content of existing cache file
-				logger.debug("Updating cache file at \(cacheFilePath)")
+				Tmignore.logger.debug("Updating cache file at \(cacheFilePath)")
 				let cacheFileURL = URL(fileURLWithPath: cacheFilePath)
 				try jsonData.write(to: cacheFileURL)
 			} else {
 				// Create new cache file
-				logger.debug("Creating new cache file at \(cacheFilePath)")
+				Tmignore.logger.debug("Creating new cache file at \(cacheFilePath)")
 				FileManager.default.createFile(atPath: cacheFilePath, contents: jsonData)
 			}
 		} catch {
-			logger.error(
+			Tmignore.logger.error(
 				"Could not save cache file to \(cacheFilePath): \(error.localizedDescription)"
 			)
 		}

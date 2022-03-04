@@ -15,11 +15,11 @@ struct List : ParsableCommand {
 		
 		/* Parse all previously added exclusions from the cache file and list those exclusions. */
 		let cachedExclusions = cache.read()
-		logger.info(
+		Tmignore.logger.info(
 			"\(cachedExclusions.count) files/directories have been excluded from backups by tmignore:\n"
 		)
 		for path in cachedExclusions {
-			logger.info("  - \(path)")
+			Tmignore.logger.info("  - \(path)")
 		}
 	}
 	

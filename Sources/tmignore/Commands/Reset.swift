@@ -18,10 +18,10 @@ struct Reset : ParsableCommand {
 		TimeMachine.removeExclusions(paths: cachedExclusions)
 		
 		/* Delete the cache directory. */
-		logger.info("Deleting the cache…")
+		Tmignore.logger.info("Deleting the cache…")
 		cache.clear()
 		
-		logger.info("Finished reset")
+		Tmignore.logger.info("Finished reset")
 	}
 	
 }

@@ -56,11 +56,11 @@ class Config {
 			do {
 				configJson = try JSON(data: jsonData as Data)
 			} catch {
-				logger.error("Could not parse config file: \(error.localizedDescription)")
+				Tmignore.logger.error("Could not parse config file: \(error.localizedDescription)")
 				throw ConfigError.parseFailed
 			}
 		} else {
-			logger.debug("No config file found at \(configPath)")
+			Tmignore.logger.debug("No config file found at \(configPath)")
 		}
 	}
 }

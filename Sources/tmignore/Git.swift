@@ -6,7 +6,7 @@ class Git {
 	/// Returns the list of ignored files for the specified Git repository (both local and global
 	/// `.gitignore` files are considered)
 	static func getIgnoredFiles(repoPath: String) -> [String] {
-		logger.debug("Obtaining list of ignored files for repo at \(repoPath)…")
+		Tmignore.logger.debug("Obtaining list of ignored files for repo at \(repoPath)…")
 		var ignoredFiles = [String]()
 
 		// Let Git list all ignored files/directories
@@ -30,12 +30,12 @@ class Git {
 			ignoredFiles = ignoredFilesRel.map { "\(repoPath)/\($0)" }
 		} catch {
 			let error = error as! ExecError
-			logger.error(
+			Tmignore.logger.error(
 				"Error obtaining list of ignored files for repository at path \(repoPath): \(error.execResult.stderr ?? "")"
 			)
 		}
 
-		logger.debug("Found \(ignoredFiles.count) ignored files for repo at \(repoPath)")
+		Tmignore.logger.debug("Found \(ignoredFiles.count) ignored files for repo at \(repoPath)")
 		return ignoredFiles
 	}
 
@@ -43,7 +43,7 @@ class Git {
 	/// `ignoredPaths` aren't traversed
 	static func findRepos(searchPath: String, ignoredPaths: [String]) -> [String] {
 		var repoPaths = [String]()
-		logger.info("Searching for Git repositories in \(searchPath)…")
+		Tmignore.logger.info("Searching for Git repositories in \(searchPath)…")
 
 		// Start building array of arguments for the `find` command
 		var arguments = [searchPath]
@@ -69,7 +69,7 @@ class Git {
 			for errLine in splitLines(linesStr: error.execResult.stderr) {
 				// Ignore permission errors
 				if !errLine.hasSuffix("Operation not permitted") {
-					logger.error("Error searching for Git repositories: \(errLine)")
+					Tmignore.logger.error("Error searching for Git repositories: \(errLine)")
 				}
 			}
 		}
@@ -80,7 +80,7 @@ class Git {
 		// Build list of repositories (e.g. ["/path/to/repo"])
 		repoPaths = gitDirs.map { String($0.dropLast(5)) }
 
-		logger.info("Found \(repoPaths.count) Git repositories in \(searchPath)")
+		Tmignore.logger.info("Found \(repoPaths.count) Git repositories in \(searchPath)")
 		return repoPaths
 	}
 }

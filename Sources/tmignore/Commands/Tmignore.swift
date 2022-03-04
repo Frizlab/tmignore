@@ -6,17 +6,6 @@ import Logging
 
 
 
-let logger: Logger = {
-	/* Set up Helium logger. */
-	let heliumLogger = HeliumLogger()
-	heliumLogger.colored = true
-	heliumLogger.format = "(%msg)"
-	
-	/* Configure swift-log to use Helium backend. */
-	LoggingSystem.bootstrap(heliumLogger.makeLogHandler)
-	return Logger(label: "me.frizlab.tmignore")
-}()
-
 @main
 struct Tmignore : ParsableCommand {
 	
@@ -29,5 +18,16 @@ struct Tmignore : ParsableCommand {
 			Reset.self
 		]
 	)
+	
+	static let logger: Logger = {
+		/* Set up Helium logger. */
+		let heliumLogger = HeliumLogger()
+		heliumLogger.colored = true
+		heliumLogger.format = "(%msg)"
+		
+		/* Configure swift-log to use Helium backend. */
+		LoggingSystem.bootstrap(heliumLogger.makeLogHandler)
+		return Logger(label: "me.frizlab.tmignore")
+	}()
 	
 }

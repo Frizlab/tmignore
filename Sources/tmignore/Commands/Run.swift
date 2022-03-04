@@ -24,10 +24,10 @@ struct Run : ParsableCommand {
 				repoSet.insert(repoPath)
 			}
 		}
-		logger.info("Found \(repoSet.count) Git repositories in total")
+		Tmignore.logger.info("Found \(repoSet.count) Git repositories in total")
 		
 		/* Build list of files/directories which should be excluded from Time Machine backups. */
-		logger.info("Building list of files to exclude from backups…")
+		Tmignore.logger.info("Building list of files to exclude from backups…")
 		var exclusions = [String]()
 		for repoPath in repoSet {
 			for path in Git.getIgnoredFiles(repoPath: repoPath) {
@@ -35,11 +35,11 @@ struct Run : ParsableCommand {
 				if config.whitelist.allSatisfy({ !pathMatchesGlob(glob: $0, path: path) }) {
 					exclusions.append(path)
 				} else {
-					logger.debug("Skipping whitelisted file: \(path)")
+					Tmignore.logger.debug("Skipping whitelisted file: \(path)")
 				}
 			}
 		}
-		logger.info("Identified \(exclusions.count) paths to exclude from backups")
+		Tmignore.logger.info("Identified \(exclusions.count) paths to exclude from backups")
 		
 		/* Compare generated exclusion list with the one from the previous script run, calculate diff. */
 		let cachedExclusions = cache.read()
@@ -55,7 +55,7 @@ struct Run : ParsableCommand {
 		/* Update cache file. */
 		cache.write(paths: exclusions)
 		
-		logger.info("Finished update")
+		Tmignore.logger.info("Finished update")
 	}
 	
 }
