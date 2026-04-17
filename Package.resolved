@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/apple/swift-argument-parser.git",
         "state": {
           "branch": null,
-          "revision": "e394bf350e38cb100b6bc4172834770ede1b7232",
-          "version": "1.0.3"
+          "revision": "626b5b7b2f45e1b0b1c6f4a309296d1d21d7311b",
+          "version": "1.7.1"
         }
       },
       {
@@ -42,8 +42,8 @@
         "repositoryURL": "https://github.com/apple/swift-log.git",
         "state": {
           "branch": null,
-          "revision": "5d66f7ba25daf4f94100e7022febf3c75e37a6c7",
-          "version": "1.4.2"
+          "revision": "5073617dac96330a486245e4c0179cb0a6fd2256",
+          "version": "1.12.0"
         }
       },
       {
@@ -51,8 +51,8 @@
         "repositoryURL": "https://github.com/SwiftyJSON/SwiftyJSON.git",
         "state": {
           "branch": null,
-          "revision": "b3dcd7dbd0d488e1a7077cb33b00f2083e382f07",
-          "version": "5.0.1"
+          "revision": "af76cf3ef710b6ca5f8c05f3a31307d44a3c5828",
+          "version": "5.0.2"
         }
       }
     ]
