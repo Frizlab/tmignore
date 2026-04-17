@@ -6,7 +6,8 @@ import ArgumentParser
 
 struct List : ParsableCommand {
 	
-	static var configuration: CommandConfiguration = .init(
+	static let configuration: CommandConfiguration = .init(
+		commandName: "list",
 		abstract: "Lists all files/directories that have been excluded by tmignore"
 	)
 	

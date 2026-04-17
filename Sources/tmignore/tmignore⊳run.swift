@@ -6,7 +6,8 @@ import ArgumentParser
 
 struct Run : ParsableCommand {
 	
-	static var configuration: CommandConfiguration = .init(
+	static let configuration: CommandConfiguration = .init(
+		commandName: "run",
 		abstract: "Searches the disk for files/directories ignored by Git and excludes them from future Time Machine backups"
 	)
 	

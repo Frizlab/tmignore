@@ -6,7 +6,8 @@ import ArgumentParser
 
 struct Reset : ParsableCommand {
 	
-	static var configuration: CommandConfiguration = .init(
+	static let configuration: CommandConfiguration = .init(
+		commandName: "reset",
 		abstract: "Removes all backup exclusions that were made using tmignore"
 	)
 	

@@ -10,8 +10,9 @@ import Logging
 struct Tmignore : ParsableCommand {
 	
 	static let configuration: CommandConfiguration = .init(
+		commandName: "tmignore",
 		abstract: "Exclude development files from Time Machine backups",
-		version: "1.2.2",
+		version: "dev", /* DO NOT REMOVE: VERSION_PLACEHOLDER. This tag is used to automatically replace the version when building in Homebrew. */
 		subcommands: [
 			Run.self,
 			List.self,
